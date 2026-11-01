@@ -5,7 +5,7 @@ import { ArrowUpRight, Download } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="min-h-[100dvh] flex flex-col justify-between pt-24 pb-8 md:pt-28 md:pb-10 border-b border-[#26262B]">
+    <section id="hero" className="min-h-[100dvh] flex flex-col justify-between pt-24 pb-8 md:pt-28 md:pb-10 border-b border-[#26262B]">
       <div className="max-w-[1280px] mx-auto px-6 w-full flex-1 flex flex-col justify-center my-auto">
         {/* Split-screen Grid per Design.md */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
