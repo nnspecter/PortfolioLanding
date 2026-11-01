@@ -57,11 +57,11 @@ export const sellingCases: ProjectCase[] = [
     id: "meta-tech-provider",
     title: "Официальный статус Meta Technology Provider",
     role: "Lead Integrator & Fullstack",
-    period: "2023 — 2024",
-    company: "IT-компания (B2B SaaS, NDA)",
+    period: "2026 — Настоящее время",
+    company: "",
     tagline: "Прохождение аудита безопасности и внедрение Meta Cloud API",
     problem:
-      "Для прямого подключения клиентов к WhatsApp Business API и Instagram Direct требовалось пройти аудит Meta Platforms и обеспечить уровень безопасности enterprise-стандарта.",
+      "Для прямого подключения B2B клиентов к WhatsApp Business API и Instagram Direct требовалось пройти аудит Meta Platforms и обеспечить уровень безопасности enterprise-стандарта.",
     solution:
       "Спроектировал защищенный шлюз с криптографической верификацией подписей вебхуков (HMAC-SHA256), безопасной ротацией токенов доступа OAuth 2.0 и изоляцией данных между клиентами.",
     businessResult:
@@ -73,35 +73,37 @@ export const sellingCases: ProjectCase[] = [
       "Соблюдение регламентов GDPR и политик безопасности Meta Platforms",
     ],
     tags: ["Meta Cloud API", "Node.js", "Security Audit", "OAuth 2.0", "Webhooks HMAC", "Linux VPS"],
-    metaBadge: "Audit Passed",
+    metaBadge: "Аудит пройден",
   },
   {
     id: "omnichannel-ai",
     title: "Омниканальная платформа с AI-ассистентом",
     role: "Fullstack & AI Engineer",
-    period: "2023 — Настоящее время",
+    period: "2026 — Настоящее время",
     company: "IT-компания (B2B SaaS, NDA)",
     tagline: "Единое окно оператора и автономный AI-менеджер (LLM + STT)",
     problem:
       "Высокий фонд оплаты труда (ФОТ) операторов первой линии поддержки и потеря потенциальных клиентов в нерабочие часы.",
     solution:
-      "Разработал единое окно для агрегации сообщений (WhatsApp, IG Direct, Telegram) и внедрил гибридного AI-агента на базе LLM с модулем распознавания речи (Speech-to-Text).",
+      "Разработал единое приложение для агрегации сообщений (WhatsApp, Instagram, Telegram) и внедрил гибридного AI-агента на базе LLM с модулем распознавания речи (Speech-to-Text) и Api интеграцией с ERP системой.",
     businessResult:
-      "Автоматизация 70% первичных обращений клиентов 24/7, распознавание намерений клиентов из голосовых сообщений и кратное снижение расходов бизнеса на ФОТ.",
+      "Автоматизация 90% первичных обращений клиентов, распознавание намерений клиентов из голосовых сообщений и кратное снижение расходов бизнеса на сторонние подписки. Ускорение и систематизация работы менеджеров с клиентами. ",
     techDetails: [
       "Гибридный AI-менеджер на базе LLM с поддержкой диалогового контекста",
       "Обработка аудиофайлов через модуль Speech-to-Text (STT) для голосовых сообщений",
       "Двунаправленная синхронизация чатов в реальном времени через WebSockets",
       "Автоматическая квалификация лидов и передача данных в CRM",
+      "Интеграция ERP системы в приложение, получение списка товаров для бота продажника",
+      "Управление рассылками и шаблонами WhatsApp "
     ],
     tags: ["React", "TypeScript", "Node.js", "LLM", "Speech-to-Text", "WebSockets", "FSD"],
-    metaBadge: "OPEX Reduction",
+    metaBadge: "Аудит пройден",
   },
   {
     id: "erp-crm-fsd",
     title: "Рефакторинг и развитие ERP/CRM экосистемы",
     role: "Fullstack / Архитектура",
-    period: "2023 — Настоящее время",
+    period: "2025 — Настоящее время",
     company: "IT-компания (B2B SaaS, NDA)",
     tagline: "Feature-Sliced Design, складской учет, финансы и оптимизация PostgreSQL",
     problem:
@@ -117,13 +119,13 @@ export const sellingCases: ProjectCase[] = [
       "Многоуровневая ролевая модель доступа (RBAC) для разных отделов компании",
     ],
     tags: ["Next.js", "React", "TypeScript", "FSD", "PostgreSQL", "Zustand", "Express"],
-    metaBadge: "Zero Downtime",
+    metaBadge: "Аудит пройден",
   },
   {
     id: "webrtc-mobile",
     title: "WebRTC-телефония и мобильный релиз",
     role: "Telecom & Mobile Developer",
-    period: "2023 — 2024",
+    period: "2026 — Настоящее время",
     company: "IT-компания & Pet-проект",
     tagline: "Браузерный софтфон и релиз мобильного приложения в Google Play",
     problem:

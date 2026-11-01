@@ -1,153 +1,205 @@
+import { useState } from "react";
 import { sellingCases } from "@/data/resumeData";
 import { Badge } from "@/components/ui/badge";
-import { Check, ShieldCheck, MessageSquare, Layers, PhoneCall } from "lucide-react";
+import { 
+  Check, 
+  ShieldCheck, 
+  MessageSquare, 
+  Layers, 
+  PhoneCall,
+  ArrowRight,
+  ArrowLeft
+} from "lucide-react";
 
 export function KeyCases() {
-  const iconMap: Record<string, React.ReactNode> = {
-    "meta-tech-provider": <ShieldCheck className="w-5 h-5 text-emerald-400" />,
-    "omnichannel-ai": <MessageSquare className="w-5 h-5 text-sky-400" />,
-    "erp-crm-fsd": <Layers className="w-5 h-5 text-neutral-300" />,
-    "webrtc-mobile": <PhoneCall className="w-5 h-5 text-amber-400" />,
+  const [activeId, setActiveId] = useState<string>("meta-tech-provider");
+
+  const caseTabs = [
+    { id: "meta-tech-provider", label: "Meta Tech Provider", icon: ShieldCheck },
+    { id: "omnichannel-ai", label: "AI + Омниканальность", icon: MessageSquare },
+    { id: "erp-crm-fsd", label: "ERP / CRM системы", icon: Layers },
+    { id: "webrtc-mobile", label: "WebRTC & SIP телефония", icon: PhoneCall },
+  ];
+
+  const activeIndex = sellingCases.findIndex((c) => c.id === activeId);
+  const activeCase = sellingCases[activeIndex >= 0 ? activeIndex : 0];
+
+  const handleNext = () => {
+    const nextIndex = (activeIndex + 1) % sellingCases.length;
+    setActiveId(sellingCases[nextIndex].id);
+  };
+
+  const handlePrev = () => {
+    const prevIndex = (activeIndex - 1 + sellingCases.length) % sellingCases.length;
+    setActiveId(sellingCases[prevIndex].id);
   };
 
   return (
-    <section id="cases" className="py-20 md:py-28 border-b border-[#26262B]">
+    <section id="cases" className="py-20 md:py-24 border-b border-[#26262B]">
       <div className="max-w-[1280px] mx-auto px-6">
         
         {/* Section Header */}
-        <div className="max-w-2xl mb-16 space-y-3">
-          <Badge variant="outline">
-            Коммерческие кейсы
-          </Badge>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-[-0.04em]">
-            Реализованные проекты и влияние на бизнес
-          </h2>
-          <p className="text-sm sm:text-base text-neutral-400 leading-relaxed">
-            Практический опыт разработки B2B SaaS, подтвержденный прохождением официальных аудитов, снижением операционных затрат и стабильной работой под нагрузкой.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+          <div className="max-w-2xl space-y-3">
+            <Badge variant="outline">
+              Коммерческие кейсы
+            </Badge>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-[-0.04em]">
+              Реализованные бизнес проекты 
+            </h2>
+            <p className="text-sm sm:text-base text-neutral-400 leading-relaxed">
+              Практический опыт разработки B2B продуктов, подтвержденный прохождением официальных аудитов, снижением операционных затрат и стабильной работой под нагрузкой.
+            </p>
+          </div>
+
+          {/* Prev/Next arrows for quick navigation */}
+          <div className="hidden sm:flex items-center gap-2">
+            <button
+              type="button"
+              onClick={handlePrev}
+              className="p-2.5 rounded-lg border border-[#2E2E32] bg-[#121214] text-neutral-400 hover:text-white hover:bg-[#1C1C20] transition-colors cursor-pointer"
+              aria-label="Предыдущий кейс"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <span className="font-mono text-xs text-neutral-500 px-1">
+              0{activeIndex + 1} / 0{sellingCases.length}
+            </span>
+            <button
+              type="button"
+              onClick={handleNext}
+              className="p-2.5 rounded-lg border border-[#2E2E32] bg-[#121214] text-neutral-400 hover:text-white hover:bg-[#1C1C20] transition-colors cursor-pointer"
+              aria-label="Следующий кейс"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
-        {/* Zig-Zag Alternating Rows per Design.md */}
-        <div className="space-y-20 md:space-y-28">
-          {sellingCases.map((item, index) => {
-            const isEven = index % 2 === 1;
+        {/* Button Group / Tabs Control */}
+        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-lg bg-[#121214] border border-[#26262B] w-full sm:w-fit mb-8">
+          {caseTabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = tab.id === activeId;
 
             return (
-              <div
-                key={item.id}
-                className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-center"
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveId(tab.id)}
+                className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? "bg-white text-black font-semibold shadow-sm"
+                    : "text-neutral-400 hover:text-white hover:bg-[#1A1A1E]"
+                }`}
               >
-                {/* Text Content Column */}
-                <div
-                  className={`md:col-span-6 space-y-5 ${
-                    isEven ? "md:order-2" : "md:order-1"
-                  }`}
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="p-2 rounded-md bg-[#18181B] border border-[#2E2E32]">
-                      {iconMap[item.id]}
-                    </span>
-                    <span className="text-xs font-mono text-neutral-400">
-                      {item.company} • {item.period}
-                    </span>
-                  </div>
-
-                  <div className="space-y-2">
-                    <div className="text-xs font-mono font-semibold text-neutral-400 uppercase tracking-wider">
-                      {item.role}
-                    </div>
-                    <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-[-0.03em] leading-snug">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm font-medium text-neutral-300">
-                      {item.tagline}
-                    </p>
-                  </div>
-
-                  {/* Problem & Solution block */}
-                  <div className="space-y-3 text-sm text-neutral-400 leading-relaxed">
-                    <div>
-                      <strong className="text-neutral-200">Задача бизнеса:</strong>{" "}
-                      {item.problem}
-                    </div>
-                    <div>
-                      <strong className="text-neutral-200">Решение:</strong>{" "}
-                      {item.solution}
-                    </div>
-                  </div>
-
-                  {/* Business Result Card */}
-                  <div className="p-3.5 rounded-lg bg-[#141416] border border-[#2E2E32] text-xs leading-relaxed space-y-1">
-                    <div className="font-mono font-semibold text-white flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                      Коммерческий результат:
-                    </div>
-                    <p className="text-neutral-300">
-                      {item.businessResult}
-                    </p>
-                  </div>
-
-                  {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {item.tags.map((tag, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="px-2 py-0.5 rounded bg-[#18181B] border border-[#26262B] text-[11px] font-mono text-neutral-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Technical Spec & Visual Card Column */}
-                <div
-                  className={`md:col-span-6 ${
-                    isEven ? "md:order-1" : "md:order-2"
-                  }`}
-                >
-                  <div className="surface-card p-6 border border-[#2E2E32] rounded-lg space-y-4">
-                    <div className="flex items-center justify-between pb-3 border-b border-[#26262B]">
-                      <span className="font-mono text-xs text-neutral-400">
-                        case-implementation.spec
-                      </span>
-                      {item.metaBadge && (
-                        <Badge variant="default" className="text-[11px]">
-                          {item.metaBadge}
-                        </Badge>
-                      )}
-                    </div>
-
-                    <div className="space-y-2.5">
-                      <div className="text-xs font-mono uppercase tracking-wider text-neutral-400">
-                        Техническая спецификация:
-                      </div>
-                      <ul className="space-y-2">
-                        {item.techDetails.map((detail, dIdx) => (
-                          <li
-                            key={dIdx}
-                            className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-300 bg-[#161618] p-3 rounded-md border border-[#26262B]"
-                          >
-                            <Check className="w-4 h-4 text-white shrink-0 mt-0.5" />
-                            <span className="leading-snug">{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="pt-2 text-[11px] font-mono text-neutral-500 flex items-center justify-between border-t border-[#26262B]">
-                      <span>Role: {item.role}</span>
-                      <span>Verified in Production</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <Icon className={`w-4 h-4 ${isActive ? "text-black" : "text-neutral-400"}`} />
+                <span>{tab.label}</span>
+              </button>
             );
           })}
+        </div>
+
+        {/* Compact Active Case Presentation */}
+        <div
+          key={activeCase.id}
+          className="surface-card p-6 sm:p-8 border border-[#2E2E32] rounded-lg transition-opacity duration-200"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+            
+            {/* Left Column: Business context & results (7 cols) */}
+            <div className="lg:col-span-7 space-y-5">
+              
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="text-xs font-mono text-neutral-500">
+                  {activeCase.period}
+                </span>
+                <span className="text-neutral-700">|</span>
+                <span className="text-xs font-mono text-neutral-400">
+                  {activeCase.role}
+                </span>
+              </div>
+
+              <div className="space-y-1.5">
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-[-0.03em] leading-snug">
+                  {activeCase.title}
+                </h3>
+                <p className="text-sm font-medium text-neutral-300">
+                  {activeCase.tagline}
+                </p>
+              </div>
+
+              {/* Problem & Solution */}
+              <div className="space-y-3 text-sm text-neutral-400 leading-relaxed border-t border-[#26262B] pt-4">
+                <div>
+                  <strong className="text-neutral-200">Задача бизнеса:</strong>{" "}
+                  {activeCase.problem}
+                </div>
+                <div>
+                  <strong className="text-neutral-200">Решение:</strong>{" "}
+                  {activeCase.solution}
+                </div>
+              </div>
+
+              {/* Commercial Result Highlight */}
+              <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] space-y-1">
+                <div className="font-mono text-xs font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  Коммерческий результат:
+                </div>
+                <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                  {activeCase.businessResult}
+                </p>
+              </div>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {activeCase.tags.map((tag, tIdx) => (
+                  <span
+                    key={tIdx}
+                    className="px-2 py-0.5 rounded bg-[#18181B] border border-[#26262B] text-[11px] font-mono text-neutral-400"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Technical Spec Box (5 cols) */}
+            <div className="lg:col-span-5 my-auto">
+              <div className="p-5 rounded-md bg-[#161618] border border-[#26262B] space-y-4">
+                
+                <div className="flex items-center justify-between pb-3 border-b border-[#26262B]">
+                  <span className="font-mono text-xs text-neutral-400">
+                    Техническая спецификация
+                  </span>
+                  {activeCase.metaBadge && (
+                    <Badge variant="outline" className="text-[11px] font-mono text-neutral-300">
+                      {activeCase.metaBadge}
+                    </Badge>
+                  )}
+                </div>
+
+                <div className="space-y-2.5">
+                  <ul className="space-y-2">
+                    {activeCase.techDetails.map((detail, dIdx) => (
+                      <li
+                        key={dIdx}
+                        className="flex items-start gap-2.5 text-xs text-neutral-300 bg-[#121214] p-3 rounded border border-[#26262B]"
+                      >
+                        <Check className="w-4 h-4 text-white shrink-0 mt-0.5" />
+                        <span className="leading-snug">{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>
     </section>
   );
 }
-
