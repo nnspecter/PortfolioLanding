@@ -78,7 +78,7 @@ export function KeyCases() {
         </div>
 
         {/* Button Group / Tabs Control */}
-        <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-lg bg-[#121214] border border-[#26262B] w-full sm:w-fit mb-8">
+        <div className="grid grid-cols-2 lg:flex lg:flex-wrap items-stretch lg:items-center gap-2 p-1.5 rounded-lg bg-[#121214] border border-[#26262B] w-full lg:w-fit mb-8">
           {caseTabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = tab.id === activeId;
@@ -88,7 +88,7 @@ export function KeyCases() {
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveId(tab.id)}
-                className={`flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                className={`inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-white text-black font-semibold shadow-sm"
                     : "text-neutral-400 hover:text-white hover:bg-[#1A1A1E]"
@@ -111,11 +111,11 @@ export function KeyCases() {
             {/* Left Column: Business context & results (7 cols) */}
             <div className="lg:col-span-7 space-y-5">
               
-              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
+              <div className="flex flex-col md:flex-row items-center gap-1 md:gap-3">
                 <span className="text-xs font-mono text-neutral-500">
                   {activeCase.period}
                 </span>
-                <span className="text-neutral-700">|</span>
+                <span className="hidden md:inline text-neutral-700">|</span>
                 <span className="text-xs font-mono text-neutral-400">
                   {activeCase.role}
                 </span>
