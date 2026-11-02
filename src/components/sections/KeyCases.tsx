@@ -41,7 +41,7 @@ export function KeyCases() {
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-          <div className="max-w-2xl space-y-3">
+          <div className="max-w-2xl mx-auto md:mx-0 space-y-3 text-center md:text-left">
             <Badge variant="outline">
               Коммерческие кейсы
             </Badge>
@@ -111,7 +111,7 @@ export function KeyCases() {
             {/* Left Column: Business context & results (7 cols) */}
             <div className="lg:col-span-7 space-y-5">
               
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center justify-center md:justify-start gap-3">
                 <span className="text-xs font-mono text-neutral-500">
                   {activeCase.period}
                 </span>
@@ -121,7 +121,7 @@ export function KeyCases() {
                 </span>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-1.5 text-center md:text-left">
                 <h3 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-[-0.03em] leading-snug">
                   {activeCase.title}
                 </h3>

@@ -11,7 +11,7 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 2xl:gap-16 items-center">
           
           {/* Left Column: Selling Text & Actions (7 cols) */}
-          <div className="lg:col-span-7 space-y-5 lg:space-y-6">
+          <div className="lg:col-span-7 space-y-5 lg:space-y-6 text-center lg:text-left">
             
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-[#2E2E32] bg-[#121214] text-xs font-mono text-neutral-300">
@@ -27,12 +27,12 @@ export function Hero() {
             </h1>
 
             {/* Clean Subtitle per user instruction */}
-            <p className="text-sm sm:text-base lg:text-lg text-neutral-400 max-w-[72ch] leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-neutral-400 max-w-[72ch] mx-auto lg:mx-0 leading-relaxed">
               Проектирую высоконагруженные B2B SaaS и ERP-экосистемы. Интегрирую AI-агентов и выстраиваю масштабируемую архитектуру проектов. Закрываю полный цикл разработки.
             </p>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-1">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
               <a href="#contact" className="inline-flex">
                 <Button variant="primary" size="lg" className="h-11 gap-2">
                   Контакты
@@ -126,7 +126,7 @@ export function Hero() {
         {/* Metrics Grid (Fast Delivery, Meta Tech, 24/7, Zero-Downtime) */}
         <div className="pt-6 sm:pt-8 border-t border-[#26262B] grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 2xl:gap-10">
           {keyMetrics.map((item, idx) => (
-            <div key={idx} className="space-y-1.5">
+            <div key={idx} className="space-y-1.5 text-center md:text-left">
               <div className="font-display font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight">
                 {item.value}
               </div>

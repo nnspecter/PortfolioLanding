@@ -27,7 +27,7 @@ export function Contact() {
       <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 2xl:px-16">
         
         {/* Section Header */}
-        <div className="max-w-2xl mb-12 space-y-3">
+        <div className="max-w-2xl mx-auto md:mx-0 mb-12 space-y-3 text-center md:text-left">
           <Badge variant="outline">
             Контакты и сотрудничество
           </Badge>
@@ -42,7 +42,7 @@ export function Contact() {
         {/* Full-width Direct Channels Card */}
         <div className="surface-card p-6 sm:p-8 border border-[#2E2E32] rounded-lg space-y-8">
           
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#26262B]">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-[#26262B] text-center md:text-left">
             <div>
               <h3 className="font-display text-xl font-bold text-white tracking-tight">
                 Прямые каналы связи
@@ -224,7 +224,7 @@ export function Contact() {
 
           {/* Action CTAs Strip */}
           <div className="pt-6 border-t border-[#26262B] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-xs font-mono text-neutral-400">
+            <div className="text-xs font-mono text-neutral-400 text-center sm:text-left">
               Резюме обновлено в текущем квартале • 178 KB PDF
             </div>
 

@@ -16,7 +16,7 @@ export function AboutSection() {
       <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 2xl:px-16">
         
         {/* Section Header */}
-        <div className="max-w-2xl mb-12 space-y-3">
+        <div className="max-w-2xl mx-auto md:mx-0 mb-12 space-y-3 text-center md:text-left">
           <Badge variant="outline">
             О себе
           </Badge>
