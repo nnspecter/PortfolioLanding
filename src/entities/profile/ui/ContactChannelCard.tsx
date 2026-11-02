@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/shared/lib";
+import { buttonVariants } from "@/shared/ui";
 import type { ContactChannel } from "../model/types";
 
 interface ContactChannelCardProps {
@@ -32,10 +33,12 @@ export function ContactChannelCard({ channel, actions }: ContactChannelCardProps
           href={channel.href}
           {...(channel.external && { target: "_blank", rel: "noopener noreferrer" })}
           className={cn(
-            "px-3 py-1.5 rounded transition-colors text-xs inline-flex items-center gap-1",
-            channel.primary
-              ? "bg-white text-black hover:bg-neutral-200 font-medium"
-              : "bg-[#26262B] text-neutral-200 hover:text-white font-mono"
+            buttonVariants({
+              variant: channel.primary ? "primary" : "secondary",
+              size: "sm",
+            }),
+            "h-8 px-3 text-xs gap-1",
+            !channel.primary && "font-mono"
           )}
         >
           {channel.actionLabel}

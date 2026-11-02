@@ -54,7 +54,7 @@ export function ContactSection() {
                 "w-full sm:w-auto gap-2 text-xs"
               )}
             >
-              <Download className="w-4 h-4 text-neutral-400" />
+              <Download className="w-4 h-4" />
               Скачать резюме (PDF)
             </DownloadResumeLink>
             <a

@@ -10,13 +10,15 @@ interface ButtonStyleProps {
 }
 
 const baseStyles =
-  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer active:translate-y-[1px] box-border leading-none";
+  "inline-flex items-center justify-center whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-500 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0A] disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer active:scale-95 box-border leading-none [&_svg]:transition-colors [&_svg]:duration-500";
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-white text-black font-semibold hover:bg-neutral-200 shadow-sm border border-transparent",
-  secondary: "bg-[#1C1C1F] text-white border border-[#2E2E32] hover:bg-[#26262B]",
-  outline: "border border-[#2E2E32] bg-transparent text-white hover:bg-[#1A1A1E]",
+    "bg-white text-black font-semibold border border-white shadow-[inset_0_0_0_0_#0A0A0A] hover:shadow-[inset_0_100px_0_0_#0A0A0A] hover:text-white hover:border-white",
+  secondary:
+    "bg-[#1C1C1F] text-white border border-[#2E2E32] shadow-[inset_0_0_0_0_#ffffff] hover:shadow-[inset_0_-100px_0_0_#ffffff] hover:text-black hover:border-white",
+  outline:
+    "bg-transparent text-white border border-[#2E2E32] shadow-[inset_0_0_0_0_#ffffff] hover:shadow-[inset_0_-100px_0_0_#ffffff] hover:text-black hover:border-white",
   ghost: "text-neutral-400 hover:text-white hover:bg-[#1A1A1E] border border-transparent",
   link: "text-white underline-offset-4 hover:underline p-0 h-auto border-0",
 };

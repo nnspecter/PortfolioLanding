@@ -41,7 +41,7 @@ export function Hero() {
               <DownloadResumeLink
                 className={cn(buttonVariants({ variant: "outline", size: "lg" }), "gap-2")}
               >
-                <Download className="w-4 h-4 shrink-0 text-neutral-400" />
+                <Download className="w-4 h-4 shrink-0" />
                 Резюме (PDF)
               </DownloadResumeLink>
             </div>
