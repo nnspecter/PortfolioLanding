@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer className="w-full bg-[#0A0A0A] border-t border-[#26262B] py-10">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-[#26262B]">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           
           {/* Brand */}
           <div className="flex items-center gap-3">
@@ -71,12 +71,6 @@ export function Footer() {
               <ArrowUp className="w-4 h-4" />
             </button>
           </div>
-        </div>
-
-        {/* Bottom Credits */}
-        <div className="pt-8 text-xs font-mono text-neutral-500">
-          © {new Date().getFullYear()} {personalInfo.name}
-          {personalInfo.handle && personalInfo.handle !== personalInfo.name ? ` (${personalInfo.handle})` : ""}.
         </div>
       </div>
     </footer>
