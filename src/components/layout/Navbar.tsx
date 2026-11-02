@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, type MouseEvent } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { personalInfo } from "@/data/resumeData";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/icons/SocialIcons";
@@ -140,7 +140,7 @@ export function Navbar() {
               >
                 {link.label}
                 {isActive && (
-                  <motion.span
+                  <m.span
                     layoutId="activeNavUnderline"
                     className="absolute -bottom-1 left-0 right-0 h-[2px] bg-white rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}

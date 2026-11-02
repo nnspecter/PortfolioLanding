@@ -1,5 +1,6 @@
 import { aboutData } from "@/data/resumeData";
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/ui/reveal";
 import { 
   Languages, 
   Globe2, 
@@ -16,7 +17,7 @@ export function AboutSection() {
       <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 2xl:px-16">
         
         {/* Section Header */}
-        <div className="max-w-2xl mx-auto md:mx-0 mb-12 space-y-3 text-center md:text-left">
+        <Reveal className="max-w-2xl mx-auto md:mx-0 mb-12 space-y-3 text-center md:text-left">
           <Badge variant="outline">
             О себе
           </Badge>
@@ -26,13 +27,13 @@ export function AboutSection() {
           <p className="text-sm sm:text-base text-neutral-400 leading-relaxed">
             Информация о коммерческом опыте, формате работы, высшем образовании, знании языков и сертифицированных курсах.
           </p>
-        </div>
+        </Reveal>
 
         {/* 2-Column Responsive Grid (2x2 on desktop) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch">
           
           {/* Card 1: Experience & Work format */}
-          <div className="surface-card p-6 sm:p-7 border border-[#2E2E32] rounded-lg flex flex-col justify-between space-y-6">
+          <Reveal className="surface-card p-6 sm:p-7 border border-[#2E2E32] rounded-lg flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-[#26262B]">
                 <div className="flex items-center gap-2">
@@ -96,10 +97,10 @@ export function AboutSection() {
               <Globe2 className="w-3.5 h-3.5 text-white shrink-0" />
               <span>Открыт к предложениям с полной удаленной занятостью</span>
             </div>
-          </div>
+          </Reveal>
 
           {/* Card 2: Higher Education */}
-          <div className="surface-card p-6 sm:p-7 border border-[#2E2E32] rounded-lg flex flex-col justify-between space-y-6">
+          <Reveal delay={0.08} className="surface-card p-6 sm:p-7 border border-[#2E2E32] rounded-lg flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between pb-3 border-b border-[#26262B]">
                 <div className="flex items-center gap-2">
@@ -179,10 +180,10 @@ export function AboutSection() {
               <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
               <span>Фундаментальная подготовка и системный подход к разработке</span>
             </div>
-          </div>
+          </Reveal>
 
           {/* Card 3: Languages */}
-          <div className="surface-card p-6 sm:p-7 border border-[#2E2E32] rounded-lg flex flex-col justify-between space-y-6">
+          <Reveal className="surface-card p-6 sm:p-7 border border-[#2E2E32] rounded-lg flex flex-col justify-between space-y-6">
             <div className="space-y-5">
               <div className="flex items-center justify-between pb-3 border-b border-[#26262B]">
                 <div className="flex items-center gap-2">
@@ -224,10 +225,10 @@ export function AboutSection() {
               <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
               <span>Свободное ведение технической документации и переписки</span>
             </div>
-          </div>
+          </Reveal>
 
           {/* Card 4: Completed Courses & Certifications */}
-          <div className="surface-card p-6 sm:p-7 border border-[#2E2E32] rounded-lg flex flex-col justify-between space-y-6">
+          <Reveal delay={0.08} className="surface-card p-6 sm:p-7 border border-[#2E2E32] rounded-lg flex flex-col justify-between space-y-6">
             <div className="space-y-5">
               <div className="flex items-center justify-between pb-3 border-b border-[#26262B]">
                 <div className="flex items-center gap-2">
@@ -275,7 +276,7 @@ export function AboutSection() {
               <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
               <span>Официальные верифицированные сертификаты Coursera</span>
             </div>
-          </div>
+          </Reveal>
 
         </div>
 

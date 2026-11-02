@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { sellingCases } from "@/data/resumeData";
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/ui/reveal";
 import { 
   Check, 
   ShieldCheck, 
@@ -40,7 +41,7 @@ export function KeyCases() {
       <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 2xl:px-16">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl mx-auto md:mx-0 space-y-3 text-center md:text-left">
             <Badge variant="outline">
               Коммерческие кейсы
@@ -75,10 +76,10 @@ export function KeyCases() {
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-        </div>
+        </Reveal>
 
         {/* Button Group / Tabs Control */}
-        <div className="grid grid-cols-2 lg:flex lg:flex-wrap items-stretch lg:items-center gap-2 p-1.5 rounded-lg bg-[#121214] border border-[#26262B] w-full lg:w-fit mb-8">
+        <Reveal delay={0.05} className="grid grid-cols-2 lg:flex lg:flex-wrap items-stretch lg:items-center gap-2 p-1.5 rounded-lg bg-[#121214] border border-[#26262B] w-full lg:w-fit mb-8">
           {caseTabs.map((tab) => {
             const Icon = tab.icon;
             const isActive = tab.id === activeId;
@@ -99,12 +100,12 @@ export function KeyCases() {
               </button>
             );
           })}
-        </div>
+        </Reveal>
 
         {/* Compact Active Case Presentation */}
-        <div
+        <Reveal
           key={activeCase.id}
-          className="surface-card p-6 sm:p-8 border border-[#2E2E32] rounded-lg transition-opacity duration-200"
+          className="surface-card p-6 sm:p-8 border border-[#2E2E32] rounded-lg"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
@@ -198,7 +199,7 @@ export function KeyCases() {
             </div>
 
           </div>
-        </div>
+        </Reveal>
 
       </div>
     </section>
