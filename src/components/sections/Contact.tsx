@@ -64,21 +64,21 @@ export function Contact() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
             {/* Telegram */}
-            <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] flex items-center justify-between hover:border-[#3E3E44] transition-colors">
-              <div className="flex items-center gap-3.5">
-                <span className="p-2.5 rounded bg-[#202024] text-white">
+            <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] flex flex-wrap items-center justify-between gap-3 hover:border-[#3E3E44] transition-colors">
+              <div className="flex items-center gap-3.5 min-w-0">
+                <span className="p-2.5 rounded bg-[#202024] text-white shrink-0">
                   <MessageSquare className="w-5 h-5" />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
                     Telegram
                   </div>
-                  <div className="text-sm font-semibold text-white">
+                  <div className="text-sm font-semibold text-white break-words">
                     {personalInfo.telegramHandle}
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 ml-auto">
                 <button
                   type="button"
                   onClick={() => handleCopy(personalInfo.telegramHandle, "tg")}
@@ -104,21 +104,21 @@ export function Contact() {
             </div>
 
             {/* GitHub */}
-            <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] flex items-center justify-between hover:border-[#3E3E44] transition-colors">
-              <div className="flex items-center gap-3.5">
-                <span className="p-2.5 rounded bg-[#202024] text-white">
+            <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] flex flex-wrap items-center justify-between gap-3 hover:border-[#3E3E44] transition-colors">
+              <div className="flex items-center gap-3.5 min-w-0">
+                <span className="p-2.5 rounded bg-[#202024] text-white shrink-0">
                   <GithubIcon className="w-5 h-5" />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
                     GitHub
                   </div>
-                  <div className="text-sm font-semibold text-white">
+                  <div className="text-sm font-semibold text-white break-words">
                     github.com/nnspecter
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 ml-auto">
                 <button
                   type="button"
                   onClick={() => handleCopy("https://github.com/nnspecter", "gh")}
@@ -144,21 +144,21 @@ export function Contact() {
             </div>
 
             {/* Email */}
-            <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] flex items-center justify-between hover:border-[#3E3E44] transition-colors">
-              <div className="flex items-center gap-3.5">
-                <span className="p-2.5 rounded bg-[#202024] text-white">
+            <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] flex flex-wrap items-center justify-between gap-3 hover:border-[#3E3E44] transition-colors">
+              <div className="flex items-center gap-3.5 min-w-0">
+                <span className="p-2.5 rounded bg-[#202024] text-white shrink-0">
                   <Mail className="w-5 h-5" />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
                     Email
                   </div>
-                  <div className="text-sm font-semibold text-white">
+                  <div className="text-sm font-semibold text-white break-words">
                     {personalInfo.email}
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 ml-auto">
                 <button
                   type="button"
                   onClick={() => handleCopy(personalInfo.email, "email")}
@@ -181,21 +181,21 @@ export function Contact() {
             </div>
 
             {/* WhatsApp / Phone */}
-            <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] flex items-center justify-between hover:border-[#3E3E44] transition-colors">
-              <div className="flex items-center gap-3.5">
-                <span className="p-2.5 rounded bg-[#202024] text-white">
+            <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] flex flex-wrap items-center justify-between gap-3 hover:border-[#3E3E44] transition-colors">
+              <div className="flex items-center gap-3.5 min-w-0">
+                <span className="p-2.5 rounded bg-[#202024] text-white shrink-0">
                   <WhatsAppIcon className="w-5 h-5 text-white" />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
                     WhatsApp / Телефон
                   </div>
-                  <div className="text-sm font-semibold text-white">
+                  <div className="text-sm font-semibold text-white break-words">
                     {personalInfo.phone}
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 ml-auto">
                 <button
                   type="button"
                   onClick={() => handleCopy(personalInfo.phone, "phone")}
@@ -228,7 +228,7 @@ export function Contact() {
               Резюме обновлено в текущем квартале • 178 KB PDF
             </div>
 
-            <div className="flex items-center gap-3 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
               <a
                 href={personalInfo.resumePdfUrl}
                 download="Danil_Resume_Fullstack_AI.pdf"

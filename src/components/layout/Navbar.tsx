@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { personalInfo } from "@/data/resumeData";
 import { Button } from "@/components/ui/button";
@@ -9,6 +9,9 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
+  // While a nav click is scrolling the page, keep the clicked item active
+  // instead of highlighting every section the page passes through.
+  const navScrollTarget = useRef<number | null>(null);
 
   const navLinks = [
     { id: "hero", label: "Главная", href: "#hero" },
@@ -20,6 +23,13 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      if (navScrollTarget.current !== null) {
+        if (Math.abs(window.scrollY - navScrollTarget.current) <= 2) {
+          navScrollTarget.current = null;
+        }
+        return;
+      }
 
       // Check if user is scrolled to the very bottom
       const isBottom =
@@ -45,22 +55,62 @@ export function Navbar() {
       }
     };
 
+    // The nav-click lock ends when the scroll finishes or the user takes over.
+    const releaseNavLock = () => {
+      navScrollTarget.current = null;
+    };
+    const releaseEvents = ["scrollend", "wheel", "touchstart", "keydown"] as const;
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    releaseEvents.forEach((type) =>
+      window.addEventListener(type, releaseNavLock, { passive: true })
+    );
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      releaseEvents.forEach((type) =>
+        window.removeEventListener(type, releaseNavLock)
+      );
+    };
   }, []);
+
+  const scrollToSection = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+
+    setMobileMenuOpen(false);
+    setActiveSection(id);
+
+    // Where scrollIntoView will land: section top minus the header offset,
+    // clamped to the bottom of the page.
+    const headerOffset =
+      parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    navScrollTarget.current = Math.max(
+      0,
+      Math.min(el.getBoundingClientRect().top + window.scrollY - headerOffset, maxScroll)
+    );
+
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.replaceState(null, "", `#${id}`);
+  };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-200 ${
         isScrolled
-          ? "bg-[#0A0A0A]/90 backdrop-blur-md border-b border-[#26262B] py-3.5"
-          : "bg-transparent py-5"
+          ? "bg-[#0A0A0A]/90 backdrop-blur-md border-[#26262B]"
+          : "bg-transparent border-transparent"
       }`}
     >
-      <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24 flex items-center justify-between">
+      <div className="w-full h-16 px-6 sm:px-10 lg:px-16 2xl:px-24 flex items-center justify-between">
         {/* Brand */}
-        <a href="#hero" className="flex items-center gap-3 group">
+        <a
+          href="#hero"
+          onClick={(e) => scrollToSection(e, "hero")}
+          className="flex items-center gap-3 group"
+        >
           <div className="flex flex-col">
             <span className="font-semibold text-sm tracking-tight text-white flex items-center gap-1.5">
               {personalInfo.name}
@@ -83,7 +133,7 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setActiveSection(link.id)}
+                onClick={(e) => scrollToSection(e, link.id)}
                 className={`relative py-1 text-sm font-medium transition-colors ${
                   isActive ? "text-white" : "text-neutral-400 hover:text-neutral-200"
                 }`}
@@ -124,7 +174,11 @@ export function Navbar() {
             </Button>
           </a>
 
-          <a href="#contact" className="inline-flex">
+          <a
+            href="#contact"
+            onClick={(e) => scrollToSection(e, "contact")}
+            className="inline-flex"
+          >
             <Button variant="primary" size="sm" className="h-8 gap-1 text-xs">
               Связаться
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -164,10 +218,7 @@ export function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => {
-                    setActiveSection(link.id);
-                    setMobileMenuOpen(false);
-                  }}
+                  onClick={(e) => scrollToSection(e, link.id)}
                   className={`flex items-center justify-between py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-[#1C1C20] text-white"
@@ -194,7 +245,7 @@ export function Navbar() {
             </a>
             <a
               href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => scrollToSection(e, "contact")}
             >
               <Button variant="primary" className="w-full justify-center gap-1 text-xs">
                 Связаться

@@ -68,3 +68,8 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #3F3F46;
 }
+
+/* Keep anchored sections clear of the fixed header (h-16) */
+html {
+  scroll-padding-top: 4rem;
+}

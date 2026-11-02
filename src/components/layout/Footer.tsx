@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer className="w-full bg-[#0A0A0A] border-t border-[#26262B] py-10">
       <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#26262B]">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-8 border-b border-[#26262B]">
           
           {/* Brand */}
           <div className="flex items-center gap-3">
@@ -28,7 +28,7 @@ export function Footer() {
           </div>
 
           {/* Socials & Top Action */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 w-full md:w-auto">
             <a
               href={personalInfo.github}
               target="_blank"
@@ -65,7 +65,7 @@ export function Footer() {
             </a>
             <button
               onClick={scrollToTop}
-              className="w-9 h-9 rounded-lg border border-[#2E2E32] flex items-center justify-center text-neutral-400 hover:text-white hover:bg-[#1A1A1E] transition-colors cursor-pointer ml-2"
+              className="w-9 h-9 rounded-lg border border-[#2E2E32] flex items-center justify-center text-neutral-400 hover:text-white hover:bg-[#1A1A1E] transition-colors cursor-pointer ml-auto md:ml-2"
               title="Наверх"
             >
               <ArrowUp className="w-4 h-4" />
@@ -74,14 +74,9 @@ export function Footer() {
         </div>
 
         {/* Bottom Credits */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-500">
-          <div>
-            © {new Date().getFullYear()} {personalInfo.name}
-            {personalInfo.handle && personalInfo.handle !== personalInfo.name ? ` (${personalInfo.handle})` : ""}.
-          </div>
-          <div>
-            React • TypeScript • Tailwind CSS • Feature-Sliced Design
-          </div>
+        <div className="pt-8 text-xs font-mono text-neutral-500">
+          © {new Date().getFullYear()} {personalInfo.name}
+          {personalInfo.handle && personalInfo.handle !== personalInfo.name ? ` (${personalInfo.handle})` : ""}.
         </div>
       </div>
     </footer>
