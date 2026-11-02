@@ -6,7 +6,6 @@ import { GithubIcon } from "@/components/icons/SocialIcons";
 import { Menu, X, ArrowUpRight, Download, Check } from "lucide-react";
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
   // While a nav click is scrolling the page, keep the clicked item active
@@ -22,8 +21,6 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-
       if (navScrollTarget.current !== null) {
         if (Math.abs(window.scrollY - navScrollTarget.current) <= 2) {
           navScrollTarget.current = null;
@@ -61,13 +58,24 @@ export function Navbar() {
     };
     const releaseEvents = ["scrollend", "wheel", "touchstart", "keydown"] as const;
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    // At most one section check per frame, so scrolling stays off the main thread.
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        handleScroll();
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
     releaseEvents.forEach((type) =>
       window.addEventListener(type, releaseNavLock, { passive: true })
     );
     handleScroll();
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
       releaseEvents.forEach((type) =>
         window.removeEventListener(type, releaseNavLock)
       );
@@ -97,13 +105,9 @@ export function Navbar() {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b transition-colors duration-200 ${
-        isScrolled
-          ? "bg-[#0A0A0A]/90 backdrop-blur-md border-[#26262B]"
-          : "bg-transparent border-transparent"
-      }`}
-    >
+    // Solid background, no backdrop-filter: a blurred fixed header lags behind
+    // the page during scroll in Firefox and visibly shifts.
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#26262B] bg-[#0A0A0A]">
       <div className="w-full h-16 px-6 sm:px-10 lg:px-16 2xl:px-24 flex items-center justify-between">
         {/* Brand */}
         <a
