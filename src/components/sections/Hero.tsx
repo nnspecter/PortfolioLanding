@@ -1,21 +1,21 @@
 import { personalInfo, keyMetrics } from "@/data/resumeData";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight, Download, CheckCircle2, Terminal } from "lucide-react";
 
 export function Hero() {
   return (
-    <section id="hero" className="min-h-[100dvh] flex flex-col justify-between pt-24 pb-8 md:pt-28 md:pb-10 border-b border-[#26262B]">
-      <div className="max-w-[1280px] mx-auto px-6 w-full flex-1 flex flex-col justify-center my-auto">
+    <section id="hero" className="min-h-[100dvh] flex flex-col justify-center pt-24 pb-12 sm:pt-28 sm:pb-14 lg:pt-32 lg:pb-16 2xl:pt-36 2xl:pb-20 border-b border-[#26262B]">
+      <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 2xl:px-16 flex flex-col justify-center gap-10 sm:gap-12 lg:gap-14 2xl:gap-16">
         {/* Split-screen Grid per Design.md */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 2xl:gap-16 items-center">
           
           {/* Left Column: Selling Text & Actions (7 cols) */}
           <div className="lg:col-span-7 space-y-5 lg:space-y-6">
             
             {/* Status Pill */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-[#2E2E32] bg-[#121214] text-xs font-mono text-neutral-300">
-              <span className="w-2 h-2 rounded-full bg-[#22C55E]" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
               <span>Доступен для B2B SaaS и Full-time</span>
               <span className="text-neutral-600">|</span>
               <span className="text-neutral-400">{personalInfo.location}</span>
@@ -60,10 +60,8 @@ export function Hero() {
               {/* Terminal Window Header */}
               <div className="flex items-center justify-between pb-3 border-b border-[#26262B]">
                 <div className="flex items-center gap-2">
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-600" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-600" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-neutral-600" />
-                  <span className="ml-2 font-mono text-xs text-neutral-400">
+                  <Terminal className="w-4 h-4 text-white shrink-0" />
+                  <span className="font-mono text-xs text-neutral-400">
                     Технические навыки
                   </span>
                 </div>
@@ -110,7 +108,7 @@ export function Hero() {
                   <span className="text-neutral-600 select-none text-[11px]">05</span>
                   <div className="leading-relaxed">
                     <span className="text-neutral-400 font-semibold">DevTools:</span>{" "}
-                    <span className="text-white font-medium">Claude Code, Antigravity (AI-Assisted Dev)</span>
+                    <span className="text-white font-medium">Docker | Claude Code, Antigravity</span>
                   </div>
                 </div>
               </div>
@@ -126,9 +124,9 @@ export function Hero() {
         </div>
 
         {/* Metrics Grid (Fast Delivery, Meta Tech, 24/7, Zero-Downtime) */}
-        <div className="mt-10 lg:mt-14 pt-6 border-t border-[#26262B] grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-6">
+        <div className="pt-6 sm:pt-8 border-t border-[#26262B] grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 2xl:gap-10">
           {keyMetrics.map((item, idx) => (
-            <div key={idx} className="space-y-1">
+            <div key={idx} className="space-y-1.5">
               <div className="font-display font-bold text-lg sm:text-2xl lg:text-3xl text-white tracking-tight">
                 {item.value}
               </div>

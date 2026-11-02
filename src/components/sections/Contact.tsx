@@ -2,15 +2,15 @@ import { useState } from "react";
 import { personalInfo } from "@/data/resumeData";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { GithubIcon } from "@/components/icons/SocialIcons";
+import { GithubIcon, WhatsAppIcon } from "@/components/icons/SocialIcons";
 import { 
   Mail, 
   Download, 
   Copy, 
   Check, 
-  MapPin, 
   MessageSquare,
-  ArrowUpRight
+  ArrowUpRight,
+  CheckCircle2
 } from "lucide-react";
 
 export function Contact() {
@@ -24,7 +24,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-20 md:py-28 border-b border-[#26262B]">
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 2xl:px-16">
         
         {/* Section Header */}
         <div className="max-w-2xl mb-12 space-y-3">
@@ -53,7 +53,7 @@ export function Contact() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#22C55E]" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-white shrink-0" />
               <span className="text-xs font-mono text-neutral-300">
                 Online • Казахстан (UTC+5)
               </span>
@@ -86,7 +86,7 @@ export function Contact() {
                   title="Скопировать юзернейм"
                 >
                   {copiedType === "tg" ? (
-                    <Check className="w-4 h-4 text-emerald-400" />
+                    <Check className="w-4 h-4 text-white" />
                   ) : (
                     <Copy className="w-4 h-4" />
                   )}
@@ -126,7 +126,7 @@ export function Contact() {
                   title="Скопировать ссылку"
                 >
                   {copiedType === "gh" ? (
-                    <Check className="w-4 h-4 text-emerald-400" />
+                    <Check className="w-4 h-4 text-white" />
                   ) : (
                     <Copy className="w-4 h-4" />
                   )}
@@ -166,7 +166,7 @@ export function Contact() {
                   title="Скопировать email"
                 >
                   {copiedType === "email" ? (
-                    <Check className="w-4 h-4 text-emerald-400" />
+                    <Check className="w-4 h-4 text-white" />
                   ) : (
                     <Copy className="w-4 h-4" />
                   )}
@@ -180,24 +180,44 @@ export function Contact() {
               </div>
             </div>
 
-            {/* Location & Timezone */}
+            {/* WhatsApp / Phone */}
             <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] flex items-center justify-between hover:border-[#3E3E44] transition-colors">
               <div className="flex items-center gap-3.5">
                 <span className="p-2.5 rounded bg-[#202024] text-white">
-                  <MapPin className="w-5 h-5 text-neutral-300" />
+                  <WhatsAppIcon className="w-5 h-5 text-white" />
                 </span>
                 <div>
                   <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-wider">
-                    Локация & Формат
+                    WhatsApp / Телефон
                   </div>
                   <div className="text-sm font-semibold text-white">
-                    {personalInfo.location}
+                    {personalInfo.phone}
                   </div>
                 </div>
               </div>
-              <span className="text-xs font-mono text-neutral-400 hidden sm:inline-block">
-                Часовой пояс: UTC+5
-              </span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleCopy(personalInfo.phone, "phone")}
+                  className="p-2 rounded text-neutral-400 hover:text-white hover:bg-[#26262B] transition-colors cursor-pointer"
+                  title="Скопировать номер телефона"
+                >
+                  {copiedType === "phone" ? (
+                    <Check className="w-4 h-4 text-white" />
+                  ) : (
+                    <Copy className="w-4 h-4" />
+                  )}
+                </button>
+                <a
+                  href={personalInfo.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded bg-[#26262B] text-neutral-200 hover:text-white transition-colors text-xs font-mono inline-flex items-center gap-1"
+                >
+                  Написать
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
 
           </div>

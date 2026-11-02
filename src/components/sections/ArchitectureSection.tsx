@@ -60,7 +60,7 @@ export function ArchitectureSection() {
 
   return (
     <section id="architecture" className="py-20 md:py-28 border-b border-[#26262B]">
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 2xl:px-16">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16 space-y-3">

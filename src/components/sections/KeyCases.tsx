@@ -8,7 +8,8 @@ import {
   Layers, 
   PhoneCall,
   ArrowRight,
-  ArrowLeft
+  ArrowLeft,
+  TrendingUp
 } from "lucide-react";
 
 export function KeyCases() {
@@ -36,7 +37,7 @@ export function KeyCases() {
 
   return (
     <section id="cases" className="py-20 md:py-24 border-b border-[#26262B]">
-      <div className="max-w-[1280px] mx-auto px-6">
+      <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-12 2xl:px-16">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
@@ -144,7 +145,7 @@ export function KeyCases() {
               {/* Commercial Result Highlight */}
               <div className="p-4 rounded-md bg-[#161618] border border-[#26262B] space-y-1">
                 <div className="font-mono text-xs font-semibold text-white flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                  <TrendingUp className="w-3.5 h-3.5 text-white shrink-0" />
                   Коммерческий результат:
                 </div>
                 <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">

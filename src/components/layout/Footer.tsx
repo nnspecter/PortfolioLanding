@@ -1,6 +1,6 @@
 import { personalInfo } from "@/data/resumeData";
 import { ArrowUp, Mail, Send } from "lucide-react";
-import { GithubIcon } from "@/components/icons/SocialIcons";
+import { GithubIcon, WhatsAppIcon } from "@/components/icons/SocialIcons";
 
 export function Footer() {
   const scrollToTop = () => {
@@ -8,8 +8,8 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#0A0A0A] py-12">
-      <div className="max-w-[1280px] mx-auto px-6">
+    <footer className="w-full bg-[#0A0A0A] border-t border-[#26262B] py-10">
+      <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#26262B]">
           
           {/* Brand */}
@@ -46,6 +46,15 @@ export function Footer() {
               aria-label="Telegram"
             >
               <Send className="w-4 h-4" />
+            </a>
+            <a
+              href={personalInfo.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-lg border border-[#2E2E32] flex items-center justify-center text-neutral-400 hover:text-white hover:bg-[#1A1A1E] transition-colors"
+              aria-label="WhatsApp"
+            >
+              <WhatsAppIcon className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}

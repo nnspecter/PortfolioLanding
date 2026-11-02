@@ -1,8 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/sections/Hero";
 import { KeyCases } from "@/components/sections/KeyCases";
-import { ArchitectureSection } from "@/components/sections/ArchitectureSection";
-import { Skills } from "@/components/sections/Skills";
+import { AboutSection } from "@/components/sections/AboutSection";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
 
@@ -13,8 +12,7 @@ export function App() {
       <main className="flex-1">
         <Hero />
         <KeyCases />
-        <ArchitectureSection />
-        <Skills />
+        <AboutSection />
         <Contact />
       </main>
       <Footer />

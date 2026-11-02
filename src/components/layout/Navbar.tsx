@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { personalInfo } from "@/data/resumeData";
 import { Button } from "@/components/ui/button";
 import { GithubIcon } from "@/components/icons/SocialIcons";
-import { Menu, X, ArrowUpRight, Download } from "lucide-react";
+import { Menu, X, ArrowUpRight, Download, Check } from "lucide-react";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,8 +13,7 @@ export function Navbar() {
   const navLinks = [
     { id: "hero", label: "Главная", href: "#hero" },
     { id: "cases", label: "Кейсы", href: "#cases" },
-    { id: "architecture", label: "Архитектура", href: "#architecture" },
-    { id: "skills", label: "Стек", href: "#skills" },
+    { id: "about", label: "О себе", href: "#about" },
     { id: "contact", label: "Контакты", href: "#contact" },
   ];
 
@@ -31,7 +30,7 @@ export function Navbar() {
         return;
       }
 
-      const sectionIds = ["hero", "cases", "architecture", "skills", "contact"];
+      const sectionIds = ["hero", "cases", "about", "contact"];
       const scrollPosition = window.scrollY + 180;
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
@@ -59,12 +58,9 @@ export function Navbar() {
           : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between">
+      <div className="w-full px-6 sm:px-10 lg:px-16 2xl:px-24 flex items-center justify-between">
         {/* Brand */}
         <a href="#hero" className="flex items-center gap-3 group">
-          <div className="w-8 h-8 rounded-lg bg-white text-black font-mono font-bold flex items-center justify-center text-sm">
-            D
-          </div>
           <div className="flex flex-col">
             <span className="font-semibold text-sm tracking-tight text-white flex items-center gap-1.5">
               {personalInfo.name}
@@ -179,7 +175,7 @@ export function Navbar() {
                   }`}
                 >
                   <span>{link.label}</span>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
+                  {isActive && <Check className="w-3.5 h-3.5 text-white" />}
                 </a>
               );
             })}
