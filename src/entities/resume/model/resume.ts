@@ -25,7 +25,7 @@ export const education: Education = {
   institution: "Западно-Казахстанский университет им. Махамбета Утемисова",
   institutionShort: "ЗКУ им. М. Утемисова",
   institutionType: "Университет",
-  specialty: "Вычислительная техника и ПО",
+  specialty: "Вычислительная техника и Программное обеспечение",
   specialtyCode: "ВТиПО",
   specialtyDescription: "Алгоритмическая база, базы данных и системная разработка",
   degree: "Высшее образование (диплом)",

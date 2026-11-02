@@ -62,7 +62,6 @@ export function AboutSection() {
           />
           <InfoRow
             title={education.specialty}
-            meta={education.specialtyCode}
             description={education.specialtyDescription}
             aside={<InfoChip>{education.degreeBadge}</InfoChip>}
           />
