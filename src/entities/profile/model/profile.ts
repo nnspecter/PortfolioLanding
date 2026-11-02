@@ -12,7 +12,7 @@ export const profile: Profile = {
   phone: "+7 771 664 10 02",
   whatsapp: "https://wa.me/77716641002",
   resume: {
-    url: "/Danil_Resume_Fullstack_AI.pdf",
+    url: `${import.meta.env.BASE_URL}Danil_Resume_Fullstack_AI.pdf`,
     fileName: "Danil_Resume_Fullstack_AI.pdf",
   },
 };

@@ -43,3 +43,16 @@ npm run build
 # 4. Предпросмотр сборки
 npm run preview
 ```
+
+---
+
+## 🚀 Деплой на GitHub Pages
+
+Проект настроен для автоматической публикации через **GitHub Actions**:
+
+1. Откройте репозиторий на GitHub: [nnspecter/PortfolioLanding](https://github.com/nnspecter/PortfolioLanding).
+2. Перейдите в раздел **Settings** → **Pages**.
+3. В блоке **Build and deployment** в выпадающем списке **Source** выберите **GitHub Actions**.
+4. После пуша в ветку `main` workflow `.github/workflows/deploy.yml` автоматически соберет проект и опубликует его по адресу:
+   👉 **https://nnspecter.github.io/PortfolioLanding/**
+
