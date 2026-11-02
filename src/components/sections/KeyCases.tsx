@@ -88,14 +88,14 @@ export function KeyCases() {
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveId(tab.id)}
-                className={`inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+                className={`inline-flex flex-col lg:flex-row items-center justify-center gap-1.5 lg:gap-2 px-2 lg:px-4 py-2.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
                   isActive
                     ? "bg-white text-black font-semibold shadow-sm"
                     : "text-neutral-400 hover:text-white hover:bg-[#1A1A1E]"
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? "text-black" : "text-neutral-400"}`} />
-                <span>{tab.label}</span>
+                <Icon className={`w-4 h-4 shrink-0 ${isActive ? "text-black" : "text-neutral-400"}`} />
+                <span className="text-center">{tab.label}</span>
               </button>
             );
           })}
