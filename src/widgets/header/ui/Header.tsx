@@ -25,17 +25,21 @@ export function Header() {
     // the page during scroll in Firefox and visibly shifts.
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-[#26262B] bg-[#0A0A0A]">
       <div className="w-full h-16 px-6 sm:px-10 lg:px-16 2xl:px-24 flex items-center justify-between">
-        <a
-          href={`#${SECTION_ID.hero}`}
-          onClick={(e) => handleNavigate(e, SECTION_ID.hero)}
-          className="flex flex-col"
-        >
-          <span className="font-semibold text-sm tracking-tight text-white">{profile.name}</span>
-          <span className="text-[11px] text-neutral-400 font-mono">{profile.title}</span>
-        </a>
+        {/* Navigation (Left) */}
+        <div className="flex items-center">
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
+            aria-expanded={isMenuOpen}
+            className={cn(iconButtonStyles, "bg-[#121214] md:hidden")}
+          >
+            {isMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
+          <DesktopNav items={NAV_ITEMS} activeId={activeId} onNavigate={handleNavigate} />
+        </div>
 
-        <DesktopNav items={NAV_ITEMS} activeId={activeId} onNavigate={handleNavigate} />
-
+        {/* Desktop actions (Right) */}
         <div className="hidden md:flex items-center gap-3">
           <a
             href={profile.github}
@@ -62,19 +66,11 @@ export function Header() {
           </a>
         </div>
 
+        {/* Mobile actions (Right) */}
         <div className="flex items-center gap-2 md:hidden">
           <DownloadResumeLink aria-label="Скачать резюме" className={iconButtonStyles}>
             <Download className="w-4 h-4" />
           </DownloadResumeLink>
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen((open) => !open)}
-            aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
-            aria-expanded={isMenuOpen}
-            className={cn(iconButtonStyles, "bg-[#121214]")}
-          >
-            {isMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </button>
         </div>
       </div>
 
