@@ -45,7 +45,7 @@ export function ContactSection() {
 
         <div className="pt-6 border-t border-[#26262B] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs font-mono text-neutral-400 text-center sm:text-left">
-            Резюме обновлено в текущем квартале • 178 KB PDF
+            Резюме обновлено в текущем квартале • 194 KB PDF
           </p>
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
             <DownloadResumeLink
